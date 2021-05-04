@@ -8,6 +8,7 @@
       src="https://kit.fontawesome.com/529703bd5f.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;1,400&display=swap"
@@ -22,7 +23,7 @@
       <div class="block-green"></div>
     </div>
     <!-- Container -->
-    <div class="container">
+    <div class="container" id="root">
       <!-- Left section -->
       <div class="wrapper-left">
         <!-- Me section  -->
@@ -57,17 +58,10 @@
         <!-- Chat section -->
         <div class="chat-section">
           <ul>
-            <li>
-              <img src="imgs/avatar_1.jpg" alt="profile picture" />
+            <li v-for="contact in contacts">
+              <img :src="contact.avatar" alt="profile picture" />
               <div>
-                <p>Harry</p>
-                <p>Non ci sono messaggi!</p>
-              </div>
-            </li>
-            <li>
-              <img src="imgs/avatar_1.jpg" alt="profile picture" />
-              <div>
-                <p>Harry</p>
+                <p>{{contact.name}}</p>
                 <p>Non ci sono messaggi!</p>
               </div>
             </li>
@@ -75,7 +69,45 @@
         </div>
       </div>
       <!-- Right section -->
-      <div class="wrapper-right"></div>
+      <div class="wrapper-right">
+        <!-- Header section -->
+        <div class="header-section">
+          <img src="imgs/avatar_1.jpg" alt="profile picture" />
+          <div>
+            <p>Harry</p>
+            <p>Ultimo accesso oggi alle 9.18</p>
+          </div>
+          <div>
+            <i class="fas fa-search"></i>
+            <i class="fas fa-paperclip"></i>
+            <i class="fas fa-ellipsis-v"></i>
+          </div>
+        </div>
+        <!-- Chat section right -->
+        <div class="chat-section-right">
+          <div class="green-message">
+            <p>Messaggio 1</p>
+            <p>09.28</p>
+            <i class="fas fa-caret-down"></i>
+          </div>
+          <div class="white-message">
+            <p>Messaggio 2</p>
+            <p>09.29</p>
+            <i class="fas fa-caret-down"></i>
+          </div>
+        </div>
+        <!-- Input section right -->
+        <div class="input-section-right">
+          <div>
+            <i class="far fa-smile"></i>
+          </div>
+          <div><input type="text" placeholder="Scrivi un messaggio" /></div>
+          <div>
+            <i class="fas fa-microphone"></i>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
