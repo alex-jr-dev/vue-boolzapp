@@ -5,7 +5,7 @@
 }
 
 html {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 body {
@@ -44,6 +44,7 @@ body {
 .wrapper-left {
   width: 35%;
   display: flex;
+  height: 100vh;
   flex-direction: column;
 }
 
@@ -83,21 +84,23 @@ i {
   align-items: center;
 }
 
-.notification-section div:first-of-type {
-  background-color: white;
+.notification-section i {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   height: 50px;
   width: 50px;
   border-radius: 50%;
-}
-
-.notification-section i {
-  position: relative;
-  transform: translateX(20%) translateY(65%);
   color: rgb(155, 224, 253);
+  background-color: white;
 }
 
 .notification-section p {
   font-size: 15px;
+}
+
+.notification-section div:last-of-type {
+  margin-left: 10px;
 }
 
 .notification-section div:last-of-type p:first-of-type {
@@ -109,6 +112,77 @@ i {
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* Search section */
+
+.search-section {
+  background-color: rgb(237, 237, 237);
+}
+
+.search-section input {
+  width: 100%;
+  display: inline-block;
+  padding: 5px;
+  padding-left: 25px;
+  border: none;
+  border-radius: 25px;
+}
+
+.search-section div {
+  position: relative;
+}
+
+.search-section i {
+  position: absolute;
+  left: 1%;
+  top: 24%;
+  font-size: 15px;
+  color: lightgray;
+}
+
+/* Chat section */
+
+.chat-section {
+  background-color: white;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.chat-section ul {
+  list-style: none;
+}
+
+.chat-section li {
+  padding: 8px;
+  border-bottom: 1px solid lightgray;
+}
+
+.chat-section li,
+.chat-section li img {
+  vertical-align: middle;
+}
+
+.chat-section li div {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.chat-section li div p:first-of-type {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.chat-section li div p:last-of-type {
+  font-size: 14px;
+  color: lightgrey;
+}
+
+.wrapper-left div:last-of-type {
+  padding: 0;
+}
+
+/* Right section */
 
 .wrapper-right {
   width: 70%;
