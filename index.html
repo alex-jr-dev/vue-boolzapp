@@ -58,7 +58,11 @@
         <!-- Chat section -->
         <div class="chat-section">
           <ul>
-            <li v-for="contact in contacts">
+            <li
+              v-for="contact in contacts"
+              @click="onUserClick(contact)"
+              :class="{selected: contact.avatar === activeUser.avatar}"
+            >
               <img :src="contact.avatar" alt="profile picture" />
               <div>
                 <p>{{contact.name}}</p>
@@ -72,9 +76,9 @@
       <div class="wrapper-right">
         <!-- Header section -->
         <div class="header-section">
-          <img src="imgs/avatar_1.jpg" alt="profile picture" />
+          <img :src="activeUser.avatar" alt="profile picture" />
           <div>
-            <p>Harry</p>
+            <p>{{activeUser.name}}</p>
             <p>Ultimo accesso oggi alle 9.18</p>
           </div>
           <div>
@@ -85,15 +89,17 @@
         </div>
         <!-- Chat section right -->
         <div class="chat-section-right">
-          <div class="green-message">
-            <p>Messaggio 1</p>
-            <p>09.28</p>
-            <i class="fas fa-caret-down"></i>
-          </div>
-          <div class="white-message">
-            <p>Messaggio 2</p>
-            <p>09.29</p>
-            <i class="fas fa-caret-down"></i>
+          <div class="container-messages" v-for="message in activeUser.message">
+            <div class="green-message" v-if="message.status === 'sent'">
+              <p>{{message.text}}</p>
+              <p>09.28</p>
+              <i class="fas fa-caret-down"></i>
+            </div>
+            <div class="white-message" v-if="message.status === 'received'">
+              <p>{{message.text}}</p>
+              <p>09.29</p>
+              <i class="fas fa-caret-down"></i>
+            </div>
           </div>
         </div>
         <!-- Input section right -->
@@ -101,7 +107,14 @@
           <div>
             <i class="far fa-smile"></i>
           </div>
-          <div><input type="text" placeholder="Scrivi un messaggio" /></div>
+          <div>
+            <input
+              type="text"
+              placeholder="Scrivi un messaggio"
+              v-model="userMessage"
+              @keypress.enter="sendUserMessage"
+            />
+          </div>
           <div>
             <i class="fas fa-microphone"></i>
           </div>

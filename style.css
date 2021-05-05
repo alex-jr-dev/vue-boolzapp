@@ -163,6 +163,10 @@ i {
   cursor: pointer;
 }
 
+.chat-section li.selected {
+  background-color: gray;
+}
+
 .chat-section li,
 .chat-section li img {
   vertical-align: middle;
@@ -241,8 +245,10 @@ i {
   overflow: auto;
 }
 
-.chat-section-right div {
-  display: block;
+.container-messages {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .wrapper-right .chat-section-right .green-message {
@@ -260,9 +266,9 @@ i {
 }
 
 .green-message {
-  float: right;
   background-color: lightgreen;
   position: relative;
+  margin-bottom: 10px;
   align-self: flex-end;
 }
 
@@ -277,16 +283,16 @@ i {
 
 .green-message i {
   position: absolute;
-  top: -15%;
-  right: -9%;
+  top: -7px;
+  right: -11px;
   font-size: 20px;
   color: lightgreen;
 }
 
 .white-message i {
   position: absolute;
-  top: -15%;
-  left: -9%;
+  top: -7px;
+  left: -11px;
   font-size: 20px;
   color: white;
 }
@@ -295,6 +301,7 @@ i {
   background-color: white;
   position: relative;
   align-self: flex-start;
+  margin-bottom: 10px;
 }
 /* Input section right */
 
@@ -313,4 +320,10 @@ i {
   border: none;
   width: 100%;
   border-radius: 25px;
+}
+
+/* Input outline */
+
+input:focus {
+  outline: none;
 }

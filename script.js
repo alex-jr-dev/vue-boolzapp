@@ -86,5 +86,15 @@ const app = new Vue({
         ],
       },
     ],
+    activeUser: {},
+    userMessage: "",
+  },
+  methods: {
+    onUserClick(clickedUser) {
+      this.activeUser = clickedUser;
+    },
+    sendUserMessage() {
+      this.sent = true;
+    },
   },
 });
