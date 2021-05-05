@@ -9,6 +9,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;1,400&display=swap"
@@ -79,7 +80,7 @@
           <img :src="activeUser.avatar" alt="profile picture" />
           <div>
             <p>{{activeUser.name}}</p>
-            <p>Ultimo accesso oggi alle 9.18</p>
+            <p>Ultimo accesso oggi alle {{activeUserLastAccess}}</p>
           </div>
           <div>
             <i class="fas fa-search"></i>
@@ -92,12 +93,12 @@
           <div class="container-messages" v-for="message in activeUser.message">
             <div class="green-message" v-if="message.status === 'sent'">
               <p>{{message.text}}</p>
-              <p>09.28</p>
+              <p>{{formatTime(message.date)}}</p>
               <i class="fas fa-caret-down"></i>
             </div>
             <div class="white-message" v-if="message.status === 'received'">
               <p>{{message.text}}</p>
-              <p>09.29</p>
+              <p>{{formatTime(message.date)}}</p>
               <i class="fas fa-caret-down"></i>
             </div>
           </div>
