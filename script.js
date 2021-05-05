@@ -92,14 +92,14 @@ const app = new Vue({
 
   computed: {
     activeUserLastAccess() {
-      if (!this.activeUser.messages) {
+      if (!this.activeUser.message) {
         return "";
       }
 
-      const receivedMessage = this.activeUser.messages.filter(
-        (message) => message.status === "received"
+      const receivedMessage = this.activeUser.message.filter(
+        (msg) => msg.status === "received"
       );
-      const lastMessageDate = receivedMessage[receivedMessage.lenght - 1].date;
+      const lastMessageDate = receivedMessage[receivedMessage.length - 1].date;
 
       return this.formatTime(lastMessageDate);
     },
