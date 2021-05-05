@@ -90,6 +90,11 @@ const app = new Vue({
     userMessage: "",
   },
 
+  // FIXME: Capire come fare il controllo
+  mounted() {
+    setTimeout("", 1000);
+  },
+
   computed: {
     activeUserLastAccess() {
       if (!this.activeUser.message) {
@@ -118,6 +123,14 @@ const app = new Vue({
         text: this.userMessage,
         status: "sent",
       });
+      setTimeout(() => {
+        this.activeUser.message.push({
+          date: new Date().toLocaleString("it-IT"),
+          text: "Ok!",
+          status: "received",
+        });
+      }, 1000);
+      this.userMessage = "";
     },
   },
 });
