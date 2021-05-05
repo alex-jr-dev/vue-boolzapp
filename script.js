@@ -112,5 +112,12 @@ const app = new Vue({
     formatTime(stringDate) {
       return moment(stringDate, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
     },
+    sendUserMessage() {
+      this.activeUser.message.push({
+        date: new Date().toLocaleString("it-IT"),
+        text: this.userMessage,
+        status: "sent",
+      });
+    },
   },
 });
