@@ -88,11 +88,7 @@ const app = new Vue({
     ],
     activeUser: {},
     userMessage: "",
-  },
-
-  // FIXME: Capire come fare il controllo
-  mounted() {
-    setTimeout("", 1000);
+    searchedContact: "",
   },
 
   computed: {
@@ -107,6 +103,10 @@ const app = new Vue({
       const lastMessageDate = receivedMessage[receivedMessage.length - 1].date;
 
       return this.formatTime(lastMessageDate);
+    },
+    researchContact() {
+      let userSearch = this.firstCharToUpperCase(this.searchedContact);
+      return this.contacts.filter((user) => user.name.includes(userSearch));
     },
   },
 
@@ -131,6 +131,9 @@ const app = new Vue({
         });
       }, 1000);
       this.userMessage = "";
+    },
+    firstCharToUpperCase(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
     },
   },
 });
