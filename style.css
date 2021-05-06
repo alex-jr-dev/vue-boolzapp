@@ -33,6 +33,7 @@ body {
 .container {
   width: 100%;
   max-width: 1024px;
+  height: 100vh;
   margin: auto;
   padding: 30px 0;
   display: flex;
@@ -43,7 +44,7 @@ body {
 .wrapper-left {
   width: 35%;
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
 }
 
@@ -135,7 +136,17 @@ i {
 
 .search-section i {
   position: absolute;
+}
+
+.search-section i:first-of-type {
   left: 1%;
+  top: 24%;
+  font-size: 15px;
+  color: lightgray;
+}
+
+.search-section i:last-of-type {
+  right: 1%;
   top: 24%;
   font-size: 15px;
   color: lightgray;
@@ -197,7 +208,7 @@ i {
 .wrapper-right {
   width: 70%;
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
 }
 
@@ -206,7 +217,7 @@ i {
 }
 
 .wrapper-right div:first-of-type {
-  padding: 4.6px 5px;
+  padding: 5.5px;
 }
 
 /* Header section */

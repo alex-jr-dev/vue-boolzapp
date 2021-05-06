@@ -55,16 +55,21 @@
             <input
               type="text"
               placeholder="Cerca o inizia una nuova chat"
-              v-model="searchedContact"
+              v-model="searchedText"
             />
             <i class="fas fa-search"></i>
+            <i
+              class="fas fa-times"
+              v-if="searchedText"
+              @click="searchedText=''"
+            ></i>
           </div>
         </div>
         <!-- Chat section -->
         <div class="chat-section">
           <ul>
             <li
-              v-for="contact in researchContact"
+              v-for="contact in filteredUserList"
               @click="onUserClick(contact)"
               :class="{selected: contact.avatar === activeUser.avatar}"
             >
@@ -93,7 +98,7 @@
           </div>
         </div>
         <!-- Chat section right -->
-        <div class="chat-section-right">
+        <div class="chat-section-right" ref="chatContainerToScroll">
           <div class="container-messages" v-for="message in activeUser.message">
             <div class="green-message" v-if="message.status === 'sent'">
               <p>{{message.text}}</p>

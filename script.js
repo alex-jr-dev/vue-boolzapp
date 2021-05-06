@@ -88,7 +88,7 @@ const app = new Vue({
     ],
     activeUser: {},
     userMessage: "",
-    searchedContact: "",
+    searchedText: "",
   },
 
   computed: {
@@ -104,9 +104,12 @@ const app = new Vue({
 
       return this.formatTime(lastMessageDate);
     },
-    researchContact() {
-      let userSearch = this.firstCharToUpperCase(this.searchedContact);
-      return this.contacts.filter((user) => user.name.includes(userSearch));
+    filteredUserList() {
+      return this.contacts.filter((element) => {
+        return element.name
+          .toLowerCase()
+          .includes(this.searchedText.toLowerCase());
+      });
     },
   },
 
@@ -118,22 +121,31 @@ const app = new Vue({
       return moment(stringDate, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
     },
     sendUserMessage() {
-      this.activeUser.message.push({
-        date: new Date().toLocaleString("it-IT"),
+      const currentUser = this.activeUser;
+      currentUser.message.push({
+        date: moment().format("DD/MM/YYYY HH:mm:ss"),
         text: this.userMessage,
         status: "sent",
       });
+      this.scollToBottom();
       setTimeout(() => {
-        this.activeUser.message.push({
-          date: new Date().toLocaleString("it-IT"),
+        currentUser.message.push({
+          date: moment().format("DD/MM/YYYY HH:mm:ss"),
           text: "Ok!",
           status: "received",
         });
       }, 1000);
       this.userMessage = "";
+      this.scollToBottom();
     },
-    firstCharToUpperCase(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
+    scollToBottom() {
+      this.$nextTick(() => {
+        this.$refs.chatContainerToScroll.scroollTop = this.$refs.chatContainerToScroll.scrollHeight;
+      });
     },
+  },
+
+  mounted() {
+    this.activeUser = this.contacts[0];
   },
 });
