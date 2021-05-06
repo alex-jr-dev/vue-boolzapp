@@ -100,7 +100,6 @@ const app = new Vue({
     activeUser: {},
     userMessage: "",
     searchedText: "",
-    userInput: "",
   },
 
   computed: {
