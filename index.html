@@ -150,9 +150,12 @@
               @keyup.enter="sendUserMessage"
             />
           </div>
-          <div>
-            <i class="fas fa-microphone"></i>
-          </div>
+          <i
+            class="fas fa-paper-plane"
+            @click="sendUserMessage"
+            v-if="userMessage"
+          ></i>
+          <i class="fas fa-microphone" v-else="userMessage=''"></i>
         </div>
       </div>
     </div>

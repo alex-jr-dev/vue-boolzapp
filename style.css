@@ -405,6 +405,14 @@ i {
   border-radius: 25px;
 }
 
+.input-section-right > i:last-of-type {
+  padding: 10px;
+}
+
+.input-section-right > i:last-of-type:hover {
+  color: lightseagreen;
+}
+
 /* Input outline */
 
 input:focus {
