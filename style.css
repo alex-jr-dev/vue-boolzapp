@@ -206,11 +206,7 @@ i {
 }
 
 .wrapper-right div:first-of-type {
-  padding: 5.5px;
-}
-
-.wrapper-right div:last-of-type {
-  padding: 0 5px;
+  padding: 4.6px 5px;
 }
 
 /* Header section */
@@ -309,6 +305,10 @@ i {
   display: flex;
   background-color: rgb(237, 237, 237);
   align-items: center;
+}
+
+.wrapper-right .input-section-right {
+  padding: 0 5px;
 }
 
 .input-section-right div:nth-of-type(2) {
