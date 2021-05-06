@@ -69,14 +69,15 @@
         <div class="chat-section">
           <ul>
             <li
-              v-for="contact in filteredUserList"
+              v-for="(contact,index) in filteredUserList"
               @click="onUserClick(contact)"
               :class="{selected: contact.avatar === activeUser.avatar}"
             >
               <img :src="contact.avatar" alt="profile picture" />
               <div>
                 <p>{{contact.name}}</p>
-                <p>Non ci sono messaggi!</p>
+                <p>{{lastMessageText(contact)}}</p>
+                <p>{{lastMessageTime(contact)}}</p>
               </div>
             </li>
           </ul>
@@ -89,7 +90,7 @@
           <img :src="activeUser.avatar" alt="profile picture" />
           <div>
             <p>{{activeUser.name}}</p>
-            <p>Ultimo accesso oggi alle {{activeUserLastAccess}}</p>
+            <p>Ultimo accesso oggi alle {{lastMessageTime(activeUser)}}</p>
           </div>
           <div>
             <i class="fas fa-search"></i>
@@ -99,15 +100,39 @@
         </div>
         <!-- Chat section right -->
         <div class="chat-section-right" ref="chatContainerToScroll">
-          <div class="container-messages" v-for="message in activeUser.message">
+          <div
+            class="container-messages"
+            v-for="(message,index) in activeUser.message"
+          >
             <div class="green-message" v-if="message.status === 'sent'">
               <p>{{message.text}}</p>
               <p>{{formatTime(message.date)}}</p>
               <i class="fas fa-caret-down"></i>
+
+              <div
+                :class="message.popup === true ? 'delete-panel' : 'display-none' "
+              >
+                <p @click="deleteMessage(index)">Delete message</p>
+              </div>
+
+              <div class="chevron-class">
+                <i class="fas fa-chevron-down" @click="showPopup(message)"></i>
+              </div>
             </div>
             <div class="white-message" v-if="message.status === 'received'">
               <p>{{message.text}}</p>
               <p>{{formatTime(message.date)}}</p>
+
+              <div
+                :class="message.popup === true ? 'delete-panel' : 'display-none' "
+              >
+                <p @click="deleteMessage(index)">Delete message</p>
+              </div>
+
+              <div class="chevron-class">
+                <i class="fas fa-chevron-down" @click="showPopup(message)"></i>
+              </div>
+
               <i class="fas fa-caret-down"></i>
             </div>
           </div>

@@ -167,6 +167,7 @@ i {
 .chat-section li {
   padding: 8px;
   border-bottom: 1px solid lightgray;
+  position: relative;
 }
 
 .chat-section li:hover {
@@ -187,6 +188,11 @@ i {
   display: inline-block;
   vertical-align: middle;
   margin-left: 8px;
+  width: 80%;
+}
+
+.chat-section li div p {
+  word-wrap: break-word;
 }
 
 .chat-section li div p:first-of-type {
@@ -194,9 +200,17 @@ i {
   margin-bottom: 2px;
 }
 
-.chat-section li div p:last-of-type {
+.chat-section li div p:nth-last-of-type(2) {
   font-size: 14px;
   color: lightgrey;
+}
+
+.chat-section li div p:last-of-type {
+  font-size: 12px;
+  color: lightgray;
+  position: absolute;
+  right: 3%;
+  bottom: 5%;
 }
 
 .wrapper-left div:last-of-type {
@@ -275,7 +289,6 @@ i {
 .green-message {
   background-color: lightgreen;
   position: relative;
-  margin-bottom: 10px;
   align-self: flex-end;
 }
 
@@ -288,7 +301,7 @@ i {
   bottom: 5%;
 }
 
-.green-message i {
+.green-message i:first-of-type {
   position: absolute;
   top: -7px;
   right: -11px;
@@ -296,7 +309,7 @@ i {
   color: lightgreen;
 }
 
-.white-message i {
+.white-message i:first-of-type {
   position: absolute;
   top: -7px;
   left: -11px;
@@ -304,11 +317,70 @@ i {
   color: white;
 }
 
+.green-message div:last-of-type > i,
+.white-message div:last-of-type > i {
+  position: absolute;
+  top: -20px;
+  right: 200px;
+  font-size: 12px;
+  color: gray;
+}
+
+.green-message .chevron-class {
+  top: 23px;
+  right: -200px;
+}
+
+.chat-section-right .green-message .delete-panel {
+  position: absolute;
+  background-color: rgb(255, 255, 255, 90%);
+  top: 7px;
+  right: 15px;
+  display: block;
+  padding: 12px 24px;
+}
+
+.chat-section-right .green-message .display-none,
+.chat-section-right .white-message .display-none {
+  display: none;
+}
+
+.chat-section-right .white-message .delete-panel {
+  position: absolute;
+  background-color: rgb(255, 255, 255, 90%);
+  top: 9px;
+  right: -90px;
+  display: block;
+  padding: 12px 24px;
+}
+
+.white-message .delete-panel p,
+.green-message .delete-panel p {
+  position: initial;
+  cursor: pointer;
+}
+
+.white-message .delete-panel p:hover,
+.green-message .delete-panel p:hover {
+  color: red;
+}
+
+.chevron-class {
+  position: absolute;
+  top: 23px;
+  right: -10px;
+  display: none;
+}
+
+.green-message:hover .chevron-class,
+.white-message:hover .chevron-class {
+  display: block;
+}
+
 .white-message {
   background-color: white;
   position: relative;
   align-self: flex-start;
-  margin-bottom: 10px;
 }
 /* Input section right */
 
