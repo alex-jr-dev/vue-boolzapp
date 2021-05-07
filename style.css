@@ -321,21 +321,16 @@ i {
 .white-message div:last-of-type > i {
   position: absolute;
   top: -20px;
-  right: 200px;
+  right: 10px;
   font-size: 12px;
   color: gray;
-}
-
-.green-message .chevron-class {
-  top: 23px;
-  right: -200px;
 }
 
 .chat-section-right .green-message .delete-panel {
   position: absolute;
   background-color: rgb(255, 255, 255, 90%);
-  top: 7px;
-  right: 15px;
+  top: 12px;
+  right: 14px;
   display: block;
   padding: 12px 24px;
 }
@@ -348,8 +343,8 @@ i {
 .chat-section-right .white-message .delete-panel {
   position: absolute;
   background-color: rgb(255, 255, 255, 90%);
-  top: 9px;
-  right: -90px;
+  top: 13px;
+  right: -95px;
   display: block;
   padding: 12px 24px;
 }

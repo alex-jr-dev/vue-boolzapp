@@ -79,7 +79,7 @@ const app = new Vue({
       },
       {
         name: "Luisa",
-        avatar: "imgs/avatar_4.jpg",
+        avatar: "imgs/avatar_6.jpg",
         visible: true,
         message: [
           {
