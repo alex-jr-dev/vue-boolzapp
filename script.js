@@ -135,13 +135,16 @@ const app = new Vue({
           status: "received",
           popup: false,
         });
+        this.scollToBottom();
       }, 1000);
       this.userMessage = "";
-      this.scollToBottom();
     },
+
     scollToBottom() {
       this.$nextTick(() => {
-        this.$refs.chatContainerToScroll.scroollTop = this.$refs.chatContainerToScroll.scrollHeight;
+        const elementHtml = this.$refs.chatContainerToScroll;
+
+        elementHtml.scrollTop = elementHtml.scrollHeight;
       });
     },
     lastMessageTime(user) {
